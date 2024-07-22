@@ -4,10 +4,10 @@ import morganMiddleware from "./middlewares/morgan.middleware";
 import { authenticate } from "./middlewares/auth.middleware";
 import proxy from "express-http-proxy";
 
-const USERS_SERVICE_URL = "http://localhost:3000";
-const ORDERS_SERVICE_URL = "http://localhost:3001";
-const BILLINGS_SERVICE_URL = "http://localhost:3002";
-const FEEDBACKS_SERVICE_URL = "http://localhost:8000";
+const USERS_SERVICE_URL = "http://users-ms:3000";
+const ORDERS_SERVICE_URL = "http://orders-ms:3001";
+const BILLINGS_SERVICE_URL = "http://billings-ms:3002";
+const FEEDBACKS_SERVICE_URL = "http://feedbacks-ms:8000";
 
 const port = envVariables.PORT;
 const app = express();
