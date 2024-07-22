@@ -4,10 +4,7 @@ import morganMiddleware from "./middlewares/morgan.middleware";
 import { authenticate } from "./middlewares/auth.middleware";
 import proxy from "express-http-proxy";
 
-const USERS_SERVICE_URL = "http://users-ms:3000";
-const ORDERS_SERVICE_URL = "http://orders-ms:3001";
-const BILLINGS_SERVICE_URL = "http://billings-ms:3002";
-const FEEDBACKS_SERVICE_URL = "http://feedbacks-ms:8000";
+const { USERS_SERVICE_URL, ORDERS_SERVICE_URL, BILLINGS_SERVICE_URL, FEEDBACKS_SERVICE_URL } = envVariables;
 
 const port = envVariables.PORT;
 const app = express();
@@ -39,6 +36,14 @@ app.post(
   "/api/v1/users",
   proxy(USERS_SERVICE_URL, {
     proxyReqPathResolver: () => "/api/v1/users",
+  })
+);
+
+app.put(
+  "/api/v1/users/:uuid",
+  authenticate,
+  proxy(USERS_SERVICE_URL, {
+    proxyReqPathResolver: (req) => `/api/v1/users/${req.params.uuid}`,
   })
 );
 
