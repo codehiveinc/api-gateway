@@ -14,8 +14,5 @@ COPY . .
 # Build the app
 RUN npm run build
 
-# prisma generate
-RUN npx prisma generate
-
 # Serve the app
 CMD ["npm", "start"]
