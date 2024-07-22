@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morganMiddleware);
 
 app.get("/health", (req: Request, res: Response) => {
-  res.send("I am healthy");
+  res.json({ message: "I am healthy" });
 });
 
 app.use(
